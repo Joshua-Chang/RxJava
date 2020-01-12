@@ -204,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
                 for (int i = 0; i < 100; i++) {
                     e.onNext(i);
+                    Log.d(TAG, "上游 subscribe: 发射完成"+i);
                 }
                 e.onComplete();
             }
@@ -217,8 +218,8 @@ public class MainActivity extends AppCompatActivity {
             public void onNext(Integer integer) {
                 Log.d(TAG, "下游接收 onNext: " + integer);
 
-                // 接收上游的一个事件之后，就切断下游，让下游不再接收
-//                 d.dispose();
+                // 接收上游的一个事件之后，就切断下游，让下游不再接收,但是上游还在发
+                 d.dispose();
             }
 
             @Override

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".retrofit_okhttp_rxjava.TestActivity">
+        <activity android:name=".MainActivity11">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

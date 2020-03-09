@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,5 +64,17 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(">>>","接受完成");
             }
         });
+    }
+
+    public void r01(View view) {
+
+    }
+
+    public void r02(View view) {
+
+    }
+
+    public void r04(View view) {
+
     }
 }

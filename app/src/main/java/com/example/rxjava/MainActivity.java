@@ -155,12 +155,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "上游 subscribe: 开始发射..."); // todo 2
                 e.onNext("RxJavaStudy");
 
-//                 e.onComplete(); // 发射完成  // todo 4
+                 e.onComplete(); // 发射完成  // todo 4
 
 //                 上游的最后log才会打印
                  Log.d(TAG, "上游 subscribe: 发射完成");// todo 5
 
-                 e.onError(new IllegalAccessException("error rxJava"));
+//                 e.onError(new IllegalAccessException("error rxJava"));
 
                 // TODO 结论：在 onComplete();/onError 发射完成 之后 再发射事件  下游不再接收上游的事件
                 // TODO 结论：已经发射了onComplete();， 再发射onError RxJava会报错，不允许
@@ -169,8 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 e.onNext("c");
                 // 发一百个事件
 
-                e.onError(new IllegalAccessException("error rxJava")); // 发射错误事件
-                e.onComplete(); // 发射完成
+//                e.onComplete(); // 发射完成
                 // TODO 结论：先发射onError，再onComplete();，不会报错， 有问题（onComplete不会接收到了）
             }
         }).subscribe(new Observer<String>() {

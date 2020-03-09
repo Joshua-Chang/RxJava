@@ -3,7 +3,7 @@ package com.wangyi.customrxjava;
 // todo 被观察者 上游
 public class Observable<T> { // 类声明的泛型T  3Int
 
-    ObservableOnSubscribe source;
+    ObservableOnSubscribe source;//衔接器
 
     private Observable(ObservableOnSubscribe<T> source) {
         this.source = source;
@@ -16,7 +16,7 @@ public class Observable<T> { // 类声明的泛型T  3Int
 
     // new Observable<T>(source).subscribe(Observer<Int>)
     public void subscribe(Observer<? extends T> observer) {//4int
-        observer.onSubscribe();//TODO：B
+        observer.onSubscribe();//TODO：B 订阅成功
         source.subscribe(observer); // 这个source就有了  观察者 Observer
 
 //        source.subscribe(observer)等于以下传递
@@ -48,9 +48,6 @@ public class Observable<T> { // 类声明的泛型T  3Int
             @Override
             public void subscribe(Observer<? super T> observableEmitter) { // observableEmitter == Observer
                 for (T t1 : t) {
-
-                    // Observer.onNext(1);
-
                     // 发射用户传递的参数数据 去发射事件
                     observableEmitter.onNext(t1);
                 }
@@ -141,4 +138,15 @@ public class Observable<T> { // 类声明的泛型T  3Int
 //
 //        return new Observable<R>(observableMap); // source  该怎么来？     observableMap是source的实现类
 //    }
+    // todo 给所有上游分配异步线程
+    public Observable<T> observables_On() {
+        // 实例化 处理上游的线程操作符
+        return create(new ObservableOnIO(source));
+    }
+
+    // todo 给下游分配Android主线程
+    public Observable<T> observers_AndroidMain_On() {
+        // 实例化 处理下游的线程操作符
+        return create(new ObserverAndroidMain_On(source));
+    }
 }

@@ -1,6 +1,6 @@
 package com.wangyi.customrxjava;
 
-public interface ObservableOnSubscribe<T> {
+public interface ObservableOnSubscribe<T> {//衔接器
     // ? super  代表可写的   observableEmitter == 观察者
 
     /**

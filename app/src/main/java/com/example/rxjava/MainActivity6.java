@@ -90,10 +90,9 @@ public class MainActivity6 extends AppCompatActivity {
      * @param view
      */
     public void r02(View view) {
-        Observable.just("Tom", "Jim", "Emily")//先执行
-
-                .concatWith(Observable.just("A", "B", "c"))//后执行
-                .concatWith(Observable.just("x", "y", "z"))
+        Observable.just("Tom")//先执行
+                .concatWith(Observable.just("A"))//后执行
+                .startWith(Observable.just("X"))
                 .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {

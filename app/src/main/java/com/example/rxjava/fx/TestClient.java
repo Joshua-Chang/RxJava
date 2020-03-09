@@ -32,7 +32,7 @@ public class TestClient <T>{
         show1(new Test<Student>());
         show1(new Test<WorkSub>());
 
-        show2(new Test<Worker>());
+//        show2(new Test<Worker>());
         show2(new Test<Person>());
         show2(new Test<Object>());
 //        show2(new Test<WorkSub>());//超出下限
@@ -52,7 +52,6 @@ public class TestClient <T>{
         test.add(new Person()); // 可写
         test.add(new Student()); // 可写
         test.add(new Worker()); // 可写
-
         Object object = test.get(); // 不完全可读
     }
 
@@ -69,10 +68,6 @@ public class TestClient <T>{
      * @param test
      * @param test<?extends Person>
      */
-    public static void show1(Test<?extends Person> test){
-
-    }
-    public static void show2(Test<?super Worker> test){
-
-    }
+    public static void show1(Test<?extends Person> test){ }
+    public static void show2(Test<?super Student> test){ }
 }

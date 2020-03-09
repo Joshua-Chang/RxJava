@@ -45,12 +45,10 @@ public class MainActivity4 extends AppCompatActivity {
         Observable.just("A", "B", "C").filter(new Predicate<String>() {
             @Override
             public boolean test(String s) throws Exception {
-                // return true; // 不去过滤，默认全部都会打印
-                // return false; // 如果是false 就全部都不会打印
                 if ("A".equalsIgnoreCase(s)) {
-                    return false;
+                    return false;//过滤掉
                 } else {
-                    return true;
+                    return true;// 不去过滤
                 }
             }
         }).subscribe(new Consumer<String>() {
@@ -68,7 +66,7 @@ public class MainActivity4 extends AppCompatActivity {
      * @param view
      */
     public void r02(View view) {
-        Observable.interval(2, TimeUnit.SECONDS)
+        Observable.interval(2, TimeUnit.SECONDS).take(8)
                 // 定时器 运行   只有再定时器运行基础上 加入take过滤操作符，才有take过滤操作符的价值
 
                 // 上游
@@ -100,10 +98,7 @@ public class MainActivity4 extends AppCompatActivity {
                 e.onComplete();
             }
         });
-        Observable.just(1, 1, 2, 2)
-
-
-                .distinct() // 过滤重复 发射的事件
+        Observable.just(1, 1, 2, 2).distinct() // 过滤重复 发射的事件
 
                 .subscribe(new Consumer<Integer>() {
                     @Override

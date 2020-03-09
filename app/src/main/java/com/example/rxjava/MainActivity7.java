@@ -268,7 +268,7 @@ public class MainActivity7 extends AppCompatActivity {
                 .retry(new BiPredicate<Integer, Throwable>() {
                     @Override
                     public boolean test(Integer integer, Throwable throwable) throws Exception {
-                        Thread.sleep(2);
+                        Thread.sleep(2000);
                         Log.d(TAG, "retry: 已经重试了:" + integer + "次  e：" + throwable.getMessage());
                         return true; // 重试
                     }

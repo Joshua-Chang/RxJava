@@ -77,13 +77,9 @@ public class MainActivity8 extends AppCompatActivity {
         })
                 .subscribeOn(Schedulers.io()) // todo 给上游配置异步线程    // 给上游分配多次，只会在第一次切换，后面的不切换了
                 .subscribeOn(AndroidSchedulers.mainThread()) // 被忽略
-                .subscribeOn(AndroidSchedulers.mainThread()) // 被忽略
-                .subscribeOn(AndroidSchedulers.mainThread()) // 被忽略
-                .subscribeOn(AndroidSchedulers.mainThread()) // 被忽略
                 // result: io 异步线程
 
                 .observeOn(AndroidSchedulers.mainThread()) // todo 给下游配置 安卓主线程    // 给下游分配多次，每次都会去切换
-                .observeOn(AndroidSchedulers.mainThread()) // 切换一次线程
                 .observeOn(AndroidSchedulers.mainThread()) // 切换一次线程
                 .observeOn(AndroidSchedulers.mainThread()) // 切换一次线程
                 .observeOn(Schedulers.io()) // 切换一次线程

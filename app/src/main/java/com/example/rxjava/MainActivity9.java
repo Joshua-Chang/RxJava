@@ -114,7 +114,6 @@ public class MainActivity9 extends AppCompatActivity {
         if (subscription != null)
             // subscription.request(1); // 点击一下按钮，就接收一个，取出来 给下游处理
             subscription.request(10);
-
     }
 
     public void r04(View view) {

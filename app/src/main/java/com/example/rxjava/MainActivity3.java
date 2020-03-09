@@ -23,6 +23,7 @@ import io.reactivex.functions.Function;
 import io.reactivex.observables.GroupedObservable;
 
 import static com.example.rxjava.Cons.TAG;
+
 /**
  * TODO 变换型操作符
  */
@@ -204,5 +205,30 @@ public class MainActivity3 extends AppCompatActivity {
         if (d != null) {
             d.dispose();
         }
+        Observable.just(1, 2, 3, 4)
+                .flatMap(new Function<Integer, ObservableSource<?>>() {
+                    @Override
+                    public ObservableSource<?> apply(Integer integer) throws Exception {
+                        Log.e(TAG,"concatMap:"+integer);
+                        ArrayList<String> arrayList = new ArrayList();
+                        arrayList.add(integer + "==> \t");
+                        return Observable.fromIterable(arrayList);
+                    }
+                })
+                .map(new Function<Object, Object>() {
+                    @Override
+                    public Object apply(Object o) throws Exception {
+                        Log.e(TAG,"map:"+o);
+                        char c = ((String) o).charAt(0);
+                        return c;
+                    }
+                })
+                .buffer(2)
+                .subscribe(new Consumer<List<Object>>() {
+                    @Override
+                    public void accept(List<Object> objects) throws Exception {
+                        Log.e(TAG,objects.toString());
+                    }
+                });
     }
 }

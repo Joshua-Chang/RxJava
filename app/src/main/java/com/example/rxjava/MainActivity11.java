@@ -49,7 +49,6 @@ public class MainActivity11 extends AppCompatActivity {
                         // RxJava标准的
                         // e.onError(new IllegalAccessError("我要报错了")); // 发射此事件，可以接收
                         // e.onError(new IllegalAccessException("我要报废了")); // 发射此事件，可以接收
-
                         // 错误
                         throw new IllegalAccessError("我要报错了"); // 一定会奔溃
                     }
@@ -125,6 +124,7 @@ public class MainActivity11 extends AppCompatActivity {
 
                         // 程序奔溃
                         // throw new IllegalAccessError("我要报错了"); // 一定会奔溃
+
                     } else {
                         e.onNext(i);
                     }

@@ -72,7 +72,7 @@ public class MainActivity5 extends AppCompatActivity {
                     public boolean test(String s) throws Exception {
                         return "C".equalsIgnoreCase(s);
                     }
-                })// 是否包含了 F，条件是否满足
+                })
                 .subscribe(new Consumer<Boolean>() {
                     @Override
                     public void accept(Boolean aBoolean) throws Exception {
@@ -86,8 +86,7 @@ public class MainActivity5 extends AppCompatActivity {
      * @param view
      */
     public void r05(View view) {
-        Observable.just("A", "B", "C", "D")
-                .isEmpty()
+        Observable.just("A", "B", "C", "D").isEmpty()
                 .subscribe(new Consumer<Boolean>() {
                     @Override
                     public void accept(Boolean aBoolean) throws Exception {
